@@ -2,10 +2,13 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
+import { useAuth } from '../lib/auth'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const auth = useAuth();
+
   return (
     <>
       <Head>
@@ -16,6 +19,18 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div className={styles.description}>
+
+          <button onClick={(e) => auth.signinWithGithub()}>
+            Sign In With Github
+          </button>
+          <div>{auth?.user?.email}</div>
+
+          {auth?.user && (
+            <button onClick={(e) => auth.signout()}>
+              Signout
+            </button>
+          )}
+
           <p>
             Get started by editing&nbsp;
             <code className={styles.code}>pages/index.js</code>
