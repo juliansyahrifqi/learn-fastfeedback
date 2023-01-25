@@ -26,7 +26,7 @@ const Home = () => {
           View Dashboard
         </Button>
       ) : (
-        <Button mt={4} size="sm" onClick={(e) => auth.signinWithGitHub()}>
+        <Button mt={4} size="sm" onClick={(e) => auth.signinWithGithub()}>
           Sign In
         </Button>
       )}
